@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather App</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-blue-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white p-6 rounded-xl shadow-lg w-96">
+
+        <h1 class="text-3xl font-bold text-center mb-5">
+            Weather App
+        </h1>
+        <div class="flex gap-2">
+            <input
+                type="text"
+                id="cityInput"
+                placeholder="Enter city"
+                class="border p-2 rounded w-full"
+            >                      
+            <button
+                id="searchBtn"
+                class="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+                Search
+            </button>
+
+        </div>
+
+        <p id="errorMessage" class="text-red-500 mt-3"></p>
+
+        <div id="weatherResult" class="mt-5 text-center hidden">
+            <h2 id="cityName" class="text-2xl font-bold"></h2>
+            <p id="temperature" class="text-xl mt-2"></p>
+            <p id="weatherCondition" class="mt-2"></p>
+            <p id="windSpeed" class="mt-2"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
