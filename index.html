@@ -1,49 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Weather App</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-blue-100 min-h-screen flex items-center justify-center">
+<body>
 
-    <div class="bg-white p-6 rounded-xl shadow-lg w-96">
-
-        <h1 class="text-3xl font-bold text-center mb-5">
-            Weather App
-        </h1>
-        <div class="flex gap-2">
-            <input
-                type="text"
-                id="cityInput"
-                placeholder="Enter city"
-                class="border p-2 rounded w-full"
-            >                      
-            <button
-                id="searchBtn"
-                class="bg-blue-500 text-white px-4 py-2 rounded"
-            >
-                Search
-            </button>
-
-        </div>
-
-        <p id="errorMessage" class="text-red-500 mt-3"></p>
-
-        <div id="weatherResult" class="mt-5 text-center hidden">
-            <h2 id="cityName" class="text-2xl font-bold"></h2>
-            <p id="temperature" class="text-xl mt-2"></p>
-            <p id="weatherCondition" class="mt-2"></p>
-            <p id="windSpeed" class="mt-2"></p>
-        </div>
+    <div class="sky">
+        <div class="cloud cloud-one"></div>
+        <div class="cloud cloud-two"></div>
+        <div class="cloud cloud-three"></div>
+        <div class="cloud cloud-four"></div>
     </div>
+
+    <main class="weather-app">
+
+        <section class="weather-card">
+
+            <div class="top-section">
+
+                <div class="brand">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                    <span>Weather</span>
+                </div>
+
+                <form id="weatherForm" class="search-box">
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <input
+                        type="text"
+                        id="cityInput"
+                        placeholder="Search city..."
+                        autocomplete="off"
+                    >
+
+                    <button type="submit" aria-label="Search weather">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+
+            </div>
+
+            <div id="emptyState" class="state empty-state">
+                <div class="empty-icon">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                </div>
+
+                <h1>Check the weather</h1>
+                <p>Search for a city to see current weather and forecast.</p>
+            </div>
+
+            <div id="loadingState" class="state hidden">
+                <div class="loader"></div>
+                <p>Getting weather...</p>
+            </div>
+
+            <div id="errorState" class="state hidden">
+                <div class="error-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <h2>Something went wrong</h2>
+                <p id="errorMessage"></p>
+
+                <button id="retryButton" class="retry-button">
+                    Try Again
+                </button>
+            </div>
+
+            <section id="weatherResult" class="weather-result hidden">
+
+                <div class="location">
+                    <p class="location-label">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Current Weather
+                    </p>
+
+                    <h1 id="cityName">Bengaluru</h1>
+                    <p id="countryName">India</p>
+                </div>
+
+                <div class="current-weather">
+
+                    <div id="weatherIcon" class="weather-icon">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+
+                    <div class="temperature-box">
+                        <div>
+                            <span id="temperature">28</span>
+                            <span class="degree">°C</span>
+                        </div>
+
+                        <p id="weatherDescription">
+                            Clear Sky
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="weather-details">
+
+                    <article class="detail-card">
+                        <div class="detail-icon">
+                            <i class="fa-solid fa-wind"></i>
+                        </div>
+
+                        <div>
+                            <span>Wind</span>
+                            <strong id="windSpeed">12 km/h</strong>
+                        </div>
+                    </article>
+
+                    <article class="detail-card">
+                        <div class="detail-icon">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+
+                        <div>
+                            <span>Humidity</span>
+                            <strong id="humidity">65%</strong>
+                        </div>
+                    </article>
+
+                    <article class="detail-card">
+                        <div class="detail-icon">
+                            <i class="fa-solid fa-temperature-half"></i>
+                        </div>
+
+                        <div>
+                            <span>Feels Like</span>
+                            <strong id="feelsLike">29°C</strong>
+                        </div>
+                    </article>
+
+                </div>
+
+                <div class="forecast-section">
+
+                    <div class="forecast-heading">
+                        <h2>5 Day Forecast</h2>
+                        <span>Daily</span>
+                    </div>
+
+                    <div id="forecastList" class="forecast-list"></div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
     <script src="script.js"></script>
 
 </body>
-
 </html>
